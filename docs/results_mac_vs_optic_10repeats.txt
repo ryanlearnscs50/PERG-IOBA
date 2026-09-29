@@ -1,0 +1,9 @@
+# Macular vs optic-nerve (task mac_opt), 10 repeats of 5-fold person-grouped CV, mean±std over repeats.
+# pca_base = baseline; dl_resnet_direct_e300 = headline CNN; others = ResNet variants tried. Produced by src/w6_score.py.
+# sens = optic cases correct, spec = macular cases correct (threshold 0.5).
+                model       auroc     bal_acc         acc        sens        spec sens@90spec
+             pca_base 0.579±0.027 0.609±0.025 0.632±0.024 0.537±0.044 0.680±0.032 0.237±0.057
+dl_resnet_direct_e300 0.761±0.027 0.712±0.019 0.738±0.022 0.635±0.034 0.790±0.037 0.482±0.071
+  dl_resnet_pool_e300 0.769±0.026 0.723±0.023 0.766±0.016 0.590±0.049 0.856±0.018 0.482±0.071
+ w6_resnet_e300_nomix 0.739±0.024 0.703±0.030 0.727±0.023 0.630±0.063 0.776±0.030 0.452±0.051
+       w6_resnet_e500 0.759±0.025 0.720±0.030 0.739±0.026 0.662±0.057 0.778±0.032 0.455±0.057

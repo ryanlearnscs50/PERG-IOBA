@@ -1,0 +1,4 @@
+mac_opt resnet direct simple_resnet_direct --n_ens 3 --mixup 0
+mac_opt resnet pool simple_resnet_pool --n_ens 3 --mixup 0
+mac_opt resnet direct simple_resnet_direct_mix --n_ens 3
+mac_opt resnet pool simple_resnet_pool_mix --n_ens 3

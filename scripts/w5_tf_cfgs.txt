@@ -1,0 +1,6 @@
+mac_opt patchtst direct dl_patchtst_direct
+mac_opt patchtst pool dl_patchtst_pool
+norm_mac patchtst direct dl_patchtst_direct
+norm_mac patchtst allpool dl_patchtst_allpool
+mac_on patchtst direct dl_patchtst_direct
+mac_on patchtst pool dl_patchtst_pool

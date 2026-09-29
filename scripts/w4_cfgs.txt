@@ -1,0 +1,21 @@
+norm_mac resnet all dl_resnet_all
+norm_mac inception all dl_inception_all
+norm_mac resnet allpool dl_resnet_allpool
+norm_mac inception allpool dl_inception_allpool
+norm_mac resnet pool dl_resnet_pool_diag --diag_w 0.5
+norm_mac inception pool dl_inception_pool_diag --diag_w 0.5
+norm_mac resnet allpool dl_resnet_allpool_diag --diag_w 0.5
+norm_mac inception allpool dl_inception_allpool_diag --diag_w 0.5
+mac_opt resnet pool dl_resnet_pool_diag --diag_w 0.5
+mac_opt inception pool dl_inception_pool_diag --diag_w 0.5
+mac_opt resnet pool dl_resnet_pool_diag_va --diag_w 0.5 --va_w 0.5
+mac_opt inception pool dl_inception_pool_diag_va --diag_w 0.5 --va_w 0.5
+mac_opt resnet pool dl_resnet_pool_e300_diag --diag_w 0.5 --epochs 300
+norm_imd resnet all dl_resnet_all
+norm_imd inception all dl_inception_all
+norm_imd resnet allpool dl_resnet_allpool
+norm_imd inception allpool dl_inception_allpool
+norm_imd resnet pool dl_resnet_pool_diag --diag_w 0.5
+norm_imd inception pool dl_inception_pool_diag --diag_w 0.5
+norm_imd resnet allpool dl_resnet_allpool_diag --diag_w 0.5
+norm_imd inception allpool dl_inception_allpool_diag --diag_w 0.5

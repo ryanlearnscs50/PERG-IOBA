@@ -1,0 +1,6 @@
+mac_on resnet direct dl_resnet_direct
+mac_on inception direct dl_inception_direct
+mac_on resnet pool dl_resnet_pool
+mac_on inception pool dl_inception_pool
+mac_on resnet pool dl_resnet_pool_diag --diag_w 0.5
+mac_on inception pool dl_inception_pool_diag --diag_w 0.5

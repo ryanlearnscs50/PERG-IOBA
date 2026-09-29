@@ -80,6 +80,38 @@ def load():
     return {"reps": reps, "mean": mean, "info": info}
 
 
+# Screening tasks: name -> (disease groups kept, positive groups). Records of other groups are dropped.
+SCREEN_TASKS = {
+    "norm_abn": ((0, 1, 2, 3), (1, 2, 3)),     # Normal vs any disease
+    "norm_mac": ((0, 1), (1,)),                # Normal vs macular disease
+    "norm_opt": ((0, 3), (3,)),                # Normal vs optic nerve / neuro
+    "norm_macopt": ((0, 1, 3), (1, 3)),        # Normal vs (macular or optic nerve)
+    "mac_opt": ((1, 3), (3,)),                 # differential: macular (0) vs optic nerve (1)
+    "norm_imd": ((0, 1), (1,)),                # Normal vs inherited macular dystrophies only (see DIAG_FILTER)
+    "mac_on": ((1, 3), (3,)),                  # macular vs optic neuropathies proper (no CNS/systemic/amblyopia)
+}
+# optional restriction of the positive group to specific diagnoses
+IMD = {"Macular dystrophy", "Stargardt disease", "X linked retinoschisis", "Pattern macular dystrophy",
+       "Pseudovitelliform macular dystrophy"}
+# optic-nerve group minus diagnoses without an optic-nerve lesion (retro-chiasmal/CNS, systemic, amblyopia,
+# ophthalmoplegia), chosen on clinical grounds before any mac_on result was computed
+OPTIC_NEUROPATHY = {"Inherited optic atrophy", "Orbital ischemia", "Optic neuropathy",
+                    "Nonarteritic anterior ischemic optic neuropathy", "Bilateral optic nerve atrophy",
+                    "Traumatic optic neuropathy", "Retrobulbar neuritis", "Toxic neuropathy", "Ischemic optic neuropathy",
+                    "Infectious neuritis", "Sarcoidosis neuropathy", "Bilateral Optic Atrophy"}
+DIAG_FILTER = {"norm_imd": IMD, "mac_on": OPTIC_NEUROPATHY}
+
+
+def screen_task(info: pd.DataFrame, task: str):
+    """Returns (record indices kept, binary labels) for a screening task."""
+    keep, pos = SCREEN_TASKS[task]
+    m = info.y_grp.isin(keep).values.copy()
+    if task in DIAG_FILTER:
+        m &= (~info.y_grp.isin(pos) | info.diagnosis1.isin(DIAG_FILTER[task])).values
+    sel = np.flatnonzero(m)
+    return sel, np.isin(info.y_grp.values[sel], pos).astype(int)
+
+
 def cv_splits(info: pd.DataFrame, n_splits=5, seed=0, strat_col="y_grp"):
     sgkf = StratifiedGroupKFold(n_splits=n_splits, shuffle=True, random_state=seed)
     return list(sgkf.split(np.zeros(len(info)), info[strat_col], info["group"]))

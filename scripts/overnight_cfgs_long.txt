@@ -1,0 +1,30 @@
+norm_imd inception direct dl_inception_direct_mix1 --mixup 1.0
+norm_imd inception pool dl_inception_pool_mix1 --mixup 1.0
+norm_mac resnet direct dl_resnet_direct_mix1 --mixup 1.0
+norm_mac resnet pool dl_resnet_pool_mix1 --mixup 1.0
+norm_mac inception direct dl_inception_direct_mix1 --mixup 1.0
+norm_mac inception pool dl_inception_pool_mix1 --mixup 1.0
+mac_opt resnet direct dl_resnet_direct_drop3 --dropout 0.3 --wd 5e-2
+mac_opt resnet pool dl_resnet_pool_drop3 --dropout 0.3 --wd 5e-2
+mac_opt inception direct dl_inception_direct_drop3 --dropout 0.3 --wd 5e-2
+mac_opt inception pool dl_inception_pool_drop3 --dropout 0.3 --wd 5e-2
+norm_imd resnet direct dl_resnet_direct_drop3 --dropout 0.3 --wd 5e-2
+norm_imd resnet pool dl_resnet_pool_drop3 --dropout 0.3 --wd 5e-2
+norm_imd inception direct dl_inception_direct_drop3 --dropout 0.3 --wd 5e-2
+norm_imd inception pool dl_inception_pool_drop3 --dropout 0.3 --wd 5e-2
+norm_mac resnet direct dl_resnet_direct_drop3 --dropout 0.3 --wd 5e-2
+norm_mac resnet pool dl_resnet_pool_drop3 --dropout 0.3 --wd 5e-2
+norm_mac inception direct dl_inception_direct_drop3 --dropout 0.3 --wd 5e-2
+norm_mac inception pool dl_inception_pool_drop3 --dropout 0.3 --wd 5e-2
+mac_opt resnet direct dl_resnet_direct_e300 --epochs 300
+mac_opt resnet pool dl_resnet_pool_e300 --epochs 300
+mac_opt inception direct dl_inception_direct_e300 --epochs 300
+mac_opt inception pool dl_inception_pool_e300 --epochs 300
+norm_imd resnet direct dl_resnet_direct_e300 --epochs 300
+norm_imd resnet pool dl_resnet_pool_e300 --epochs 300
+norm_imd inception direct dl_inception_direct_e300 --epochs 300
+norm_imd inception pool dl_inception_pool_e300 --epochs 300
+norm_mac resnet direct dl_resnet_direct_e300 --epochs 300
+norm_mac resnet pool dl_resnet_pool_e300 --epochs 300
+norm_mac inception direct dl_inception_direct_e300 --epochs 300
+norm_mac inception pool dl_inception_pool_e300 --epochs 300

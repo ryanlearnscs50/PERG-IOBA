@@ -1,0 +1,4 @@
+mac_opt resnet direct w6_resnet_e300_nomix --epochs 300 --mixup 0
+mac_opt resnet direct dl_resnet_direct_e300 --epochs 300
+mac_opt resnet direct w6_resnet_e500 --epochs 500
+mac_opt resnet pool dl_resnet_pool_e300 --epochs 300
