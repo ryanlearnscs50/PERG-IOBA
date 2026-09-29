@@ -1,6 +1,6 @@
 # PERG-IOBA: classifying eye disease from PERG waveforms
 
-**Start here → [docs/mac_vs_optic_summary.md](docs/mac_vs_optic_summary.md)**: can the PERG tell macular disease
+**Start here → [docs/mac_vs_optic_summary.md](docs/mac_vs_optic_summary.md)**: Can the PERG tell macular disease
 from optic-nerve disease? A simple 1-D CNN (ResNet) reaches **74% accuracy / AUROC 0.76** vs **63% / 0.58** for a
 PCA + logistic-regression baseline (10 repeats of 5-fold cross-validation, grouped by person).
 
